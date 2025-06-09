@@ -6,7 +6,6 @@ function Login() {
                 <div>
                     <form className="w-10/12 mx-auto">
                         <div>
-                            <h2 className="text-xl font-medium">Contact</h2>
                             <input
                                 required
                                 className={`w-full border border-gray-300  pt-5 pb-1 px-2 mt-3 rounded-sm}`}
@@ -15,8 +14,23 @@ function Login() {
                             <label
                                 className="relative -top-12 left-2 text-sm text-gray-500"
                             >
-                                Email
+                                email
                             </label>
+                        </div>
+                        <div>
+                            <input
+                                required
+                                className={`w-full border border-gray-300  pt-5 pb-1 px-2 mt-3 rounded-sm}`}
+                                type="text"
+                            />
+                            <label
+                                className="relative -top-12 left-2 text-sm text-gray-500"
+                            >
+                                password
+                            </label>
+                        </div>
+                        <div>
+                            <input type="submit" placeholder={'login'} className={"bg-blue-500 text-white w-28 h-10 text-lg hover:bg-blue-400 cursor-pointer transition ease-in-out duration-150"} />
                         </div>
                     </form>
                 </div>
