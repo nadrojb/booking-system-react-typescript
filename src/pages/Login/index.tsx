@@ -34,7 +34,7 @@ function Login() {
                                             e.preventDefault();
                                             setForgotPassword(false);
                                         }}
-                                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                                        className="font-semibold text-indigo-600 hover:text-indigo-500 float-right mt-2 mb-5"
                                     >
                                         Back to login
                                     </a>
