@@ -1,68 +1,134 @@
-import axios from 'axios'
-import { useState } from 'react';
-
+import {useState} from "react";
 
 function Login() {
+    const [forgotPassword, setForgotPassword] = useState(false);
 
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
+    if (forgotPassword) {
+        return (
+            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                        Recover Password
+                    </h2>
+                </div>
 
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        axios.post('http://127.0.0.1:8000/api/login', {
-            email,
-            password,
-        })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    return (
-        <>
-            <section>
-                <div>
-                    <form onSubmit={handleSubmit} className="w-10/12 mx-auto">
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <form action="#" method="POST" className="space-y-6">
                         <div>
-                            <input
-                                required
-                                className={`w-full border border-gray-300  pt-5 pb-1 px-2 mt-3 rounded-sm}`}
-                                type="text"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            <label
-                                className="relative -top-12 left-2 text-sm text-gray-500"
-                            >
-                                email
+                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                                Email address
                             </label>
+                            <div className="mt-2">
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    required
+                                    autoComplete="email"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                />
+                                <div className="text-sm">
+                                    <a
+                                        href="#"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setForgotPassword(false);
+                                        }}
+                                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                                    >
+                                        Back to login
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                         <div>
-                            <input
-                                required
-                                className={`w-full border border-gray-300  pt-5 pb-1 px-2 mt-3 rounded-sm}`}
-                                type="text"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <label
-                                className="relative -top-12 left-2 text-sm text-gray-500"
+                            <button
+                                type="submit"
+                                className="cursor-pointer flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                password
-                            </label>
-                        </div>
-                        <div>
-                            <input type="submit" placeholder={'login'} className={"bg-blue-500 text-white w-28 h-10 text-lg hover:bg-blue-400 cursor-pointer transition ease-in-out duration-150"} />
+                                Send Reset Link
+                            </button>
                         </div>
                     </form>
                 </div>
+            </div>
+        );
+    }
 
-            </section>
+    return (
+        <>
+            <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                        Seating Services Limited CRM
+                    </h2>
+                    <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+                        Sign in to your account
+                    </h2>
+                </div>
+
+                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                    <form action="#" method="POST" className="space-y-6">
+                        <div>
+                            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
+                                Email address
+                            </label>
+                            <div className="mt-2">
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    required
+                                    autoComplete="email"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className="flex items-center justify-between">
+                                <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
+                                    Password
+                                </label>
+                                <div className="text-sm">
+                                    <a
+                                        href="#"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setForgotPassword(true);
+                                        }}
+                                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                                    >
+                                        Forgot password?
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="mt-2">
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    required
+                                    autoComplete="current-password"
+                                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button
+                                type="submit"
+                                className="cursor-pointer flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            >
+                                Sign in
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </>
-    )
+    );
 }
 
-export default Login
+export default Login;
